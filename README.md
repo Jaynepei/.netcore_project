@@ -10,8 +10,8 @@ Our Microservices included:
  - CartAPI - Cart operation
  - OrdersAPI - Order history tagged to user
  - ProductsAPI - retrieve products
- - WebShoppingCart(Home) - create session, search functions
+ - WebShoppingCart(Home) - create session, search function 
  
-My Scope of Work: WebShoppingCart(Home) - search functions,displaying of varied results
+My Scope of Work: WebShoppingCart(Home) - search function and displaying of varied results
 
 ![](/WebShoppingCart_1A/demo%20-search.gif)
