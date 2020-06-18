@@ -14,4 +14,4 @@ Our Microservices included:
  
 My Scope of Work: WebShoppingCart(Home) - search functions,displaying of varied results
 
-![](demo -search.gif)
+![](/WebShoppingCart_1A/demo%20-search.gif)
