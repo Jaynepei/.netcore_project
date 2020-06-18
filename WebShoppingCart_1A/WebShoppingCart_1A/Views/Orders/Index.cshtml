@@ -1,0 +1,29 @@
+﻿@*@using WebShoppingCart_1A.Controllers
+
+
+
+    @{
+        ViewData["Title"] = "index";
+
+        var ordersview = ViewData["pastorders"] as List<Orders>; // need to change
+
+    }
+    <partial name="_Productlayout" for="@ordersview" />
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to PaymentAPI</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@

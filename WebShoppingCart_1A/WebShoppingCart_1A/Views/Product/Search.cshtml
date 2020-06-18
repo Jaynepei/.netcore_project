@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+    var searchedproduct = ViewData["searchedproducts"] as List<Product>;
+}
+
+<nav class="navbar navbar-light bg-light">
+
+    <form method="get" class="form-inline " asp-controller="Product" asp-action="Search">
+        <p>
+            <input type="Search" placeholder="Search" class="form-control mr-sm-2 justify-content-center" name="keyword" aria-label="Search" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="Submit" value="Submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" asp-action="Index">Get all products</button>
+        </p>
+    </form>
+</nav>
+<br />
+
+@if (searchedproduct.Count == 0)
+{
+    <p>No products matched to search criteria.</p>
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in searchedproduct)
+        {
+
+            <div class="col-sm-4">
+                <div class="" card-deck"">
+                    <a href="https://localhost:44361/Product/Detail?productid=@product.Id">
+                        <img class="card-img-top d-block w-100" style="height:300px"
+                             src=@product.imageURL usemap="#photo">
+                    </a>
+                    <div class="card-body">
+                        <a href="https://localhost:44361/Product/Detail?productid=@product.Id" style="color:black;font-weight:bold">@product.productName</a>
+                        <input class="card-text" type="hidden" name="productId"><br />
+                        @{int rating = (int)product.productRating;
+                            if (product.productRating % 1 == 0)
+                            {
+                                for (int i = 0; i < rating; i++)
+                                {
+                                    <img src="~/images/onestar.png" style="height:20px; width:20px;" />
+                                }
+                                for (int i = 0; i < 5 - rating; i++)
+                                {
+                                    <img src="~/images/emptystar.png" style="height:20px; width:20px;" />
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < rating; i++)
+                                {
+                                    <img src="~/images/onestar.png" style="height:20px; width:20px;" />
+                                }
+                                <img src="~/images/halfstar.png" style="height:20px; width:20px;" />
+                                for (int i = 0; i < 4 - rating; i++)
+                                {
+                                    <img src="~/images/emptystar.png" style="height:20px; width:20px;" />
+                                }
+                            }
+                        }
+                    </div>
+
+                    <div class="card-footer">
+                        <h5 class="card-title text-center">@product.unitPrice.ToString("c")</h5>
+                        <div class="text-center">
+                            <input type="button" name="AddToCart" value="Add to basket" itemid="@product.Id" onclick="AddToCart(this)" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    function AddToCart(item) {
+        var itemId = $(item).attr("itemid");
+        var formData = new FormData();
+        formData.append("ItemId", itemId);
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: formData,
+            url: '/Product/AddToCart',
+            success: function (data) {
+
+            },
+            error: function () { alert("Error"); }
+        });
+    }
+</script>
+
+@*pagegation*@
+@*<br />
+<br />
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js"></script>*@

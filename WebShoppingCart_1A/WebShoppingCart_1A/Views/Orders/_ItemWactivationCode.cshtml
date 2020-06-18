@@ -1,0 +1,32 @@
+﻿
+@model Orders
+
+@{
+    var item = Model;
+}
+
+
+    <div class="row row-center product-line">
+        <div class="col-sm-4">
+            <img class="img-product-basket w-75"
+                 src="@item.imageURL" />
+        </div>
+        @*<div class="col-sm-2 text-center">@item.imageURL</div>*@
+       
+        <div class="col-sm-2 text-center">
+            <span class="text-center">@item.Id</span> 
+        </div>
+        <div class="col-sm-2 text-center">@item.unitPrice.ToString("C")</div>
+        @*<div class="col-sm-2 text-center">
+            <span class="text-center">item quantity</span>
+        </div>*@
+        <div class="col-sm-2">
+            <div class="pull-right">
+                <span class="pull-right">
+                    @item.timestamp
+                </span>
+            </div>
+        </div>
+    </div>
+   
+        <br />

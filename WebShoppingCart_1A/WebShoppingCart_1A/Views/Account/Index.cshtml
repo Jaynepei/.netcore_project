@@ -1,0 +1,13 @@
+﻿@{
+    var accounts = ViewData["accounts"] as List<Account>;
+}
+
+@if (Context.Request.Cookies["UserId"] != null && accounts != null)
+{
+    //foreach (var account in accounts)
+    //{
+        <div>
+            <h1>Welcome Back User!</h1>
+        </div>
+    //}
+}
